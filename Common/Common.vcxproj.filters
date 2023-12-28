@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="StrukturePodataka">
+      <UniqueIdentifier>{5bbc8fba-225d-41d2-af2b-5bf127268372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementacije">
+      <UniqueIdentifier>{b8360ce0-daa6-4a9c-b8b2-e034e357b3f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Red.h">
+      <Filter>StrukturePodataka</Filter>
+    </ClInclude>
+    <ClInclude Include="RedCvor.h">
+      <Filter>StrukturePodataka</Filter>
+    </ClInclude>
+    <ClInclude Include="RadSaRedom.h" />
+    <ClInclude Include="parametriLoadBalancer.h">
+      <Filter>StrukturePodataka</Filter>
+    </ClInclude>
+    <ClInclude Include="parametriWorker.h">
+      <Filter>StrukturePodataka</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
