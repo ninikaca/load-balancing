@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="server.c" />
+    <ClCompile Include="klijentiTCP.c">
+      <Filter>Implementacije</Filter>
+    </ClCompile>
+    <ClCompile Include="loadBalancer.c">
+      <Filter>Implementacije</Filter>
+    </ClCompile>
+    <ClCompile Include="worker.c">
+      <Filter>Implementacije</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ObradjivaciPodataka">
+      <UniqueIdentifier>{2b445752-8840-4069-8ece-527c5d22856e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Implementacije">
+      <UniqueIdentifier>{f42e36b5-01ad-4fe2-9bbc-4a3b5b286d33}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="klijentiTCP.h">
+      <Filter>ObradjivaciPodataka</Filter>
+    </ClInclude>
+    <ClInclude Include="loadBalancer.h">
+      <Filter>ObradjivaciPodataka</Filter>
+    </ClInclude>
+    <ClInclude Include="worker.h">
+      <Filter>ObradjivaciPodataka</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
