@@ -43,6 +43,55 @@ int main() {
     printf("Kreiranje i slanje podataka na Load Balancing servis...\n");
     printf("Pritisnite 'q' ili 'Q' za kraj rada klijenta.\n\n");
 
+    do {
+        if (_kbhit()) { // Check if a key has been pressed
+            char ch = _getch(); // Get the pressed key
+            if (ch == 'q' || ch == 'Q') {
+                printf("\nPritisnite bilo koji taster da zatvorite klijensku aplikaciju...");
+                char c = getchar();
+                break;
+            }
+        }
+
+        srand((unsigned int)time(NULL));
+        srand(rand() % lastGenNumber);
+        int broj = lastGenNumber = rand() % 300 + 1; // brojevi u opsegu od 1 do 300
+
+        // Slanje broja serveru
+        send(sockfd, (char*)&broj, sizeof(broj), 0);
+
+        // Ispis poruke o slanju
+        printf("Broj poslat na servis: %3d\n", broj);
+
+        bytesReceived = recv(sockfd, buffer, sizeof(buffer), 0);
+        if (bytesReceived <= 0) {
+            if (bytesReceived == 0) {
+                printf("Server je prekinuo vezu!\n");
+                printf("Pritisnite bilo koji taster da zatvorite klijensku aplikaciju...");
+                char c = getchar();
+                break;
+            }
+            else {
+                printf("Server je zatvorio vezu!\n");
+                printf("Pritisnite bilo koji taster da zatvorite klijensku aplikaciju...");
+                char c = getchar();
+                break;
+            }
+        }
+        else {
+            if (bytesReceived > 0 && bytesReceived < 1023) {
+                buffer[bytesReceived] = '\0';
+                //printf("Server: %s\n", buffer);
+            }
+            else {
+                printf("Pritisnite bilo koji taster da zatvorite klijensku aplikaciju...");
+                char c = getchar();
+                break;
+            }
+        }
+
+        Sleep(500); // pauza do sledeceg slanja
+    } while (bytesReceived > 0);
 
     // Zatvaranje socket-a i čišćenje Winsock-a
     closesocket(sockfd);
