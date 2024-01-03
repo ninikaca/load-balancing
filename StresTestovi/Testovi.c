@@ -1,0 +1,41 @@
+#include "Testovi.h"
+
+bool Test_Red(const unsigned long broj_podataka) {
+    Red red;
+    inicijalizujRed(&red);
+
+    // Dodajemo podatke u red
+    for (unsigned long i = 0; i < broj_podataka; ++i) {
+        dodajURed(&red, i);
+    }
+
+    // Provera da li je red prazan
+    if (jePrazan(&red)) {
+        printf("GRESKA: Red je neocekivano prazan nakon dodavanja elemenata.\n");
+        return false;
+    }
+
+    // Uklanjamo elemente iz reda
+    for (unsigned long i = 0; i < broj_podataka; ++i) {
+        int podatak = ukloniIzReda(&red);
+        if (podatak != i) {
+            printf("GRESKA: Neocekivani podatak %d umesto %lu\n", podatak, i);
+            return false;
+        }
+    }
+
+    // Provera da li je red prazan nakon uklanjanja svih elemenata
+    if (!jePrazan(&red)) {
+        printf("GRESKA: Red nije prazan nakon uklanjanja svih elemenata.\n");
+        return false;
+    }
+
+    // Uni�tavanje reda i oslobadjanje resursa
+    unistiRed(&red);
+
+    return true;
+}
+
+bool Test_Propusnosti(const unsigned long broj_podataka, const unsigned short broj_workera) {
+        
+}
