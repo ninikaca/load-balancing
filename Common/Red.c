@@ -8,6 +8,29 @@ void inicijalizujRed(Red* red) {
     InitializeCriticalSection(&red->kriticna_sekcija);
 }
 
+// Funkcija za dodavanje elementa u red
+void dodajURed(Red* red, int vrednost) {
+    RedCvor* noviCvor = (RedCvor*)malloc(sizeof(RedCvor));
+    if (noviCvor == NULL) {
+        // Obrada greške ako alokacija memorije nije uspela
+        return;
+    }
+    noviCvor->podatak = vrednost;
+    noviCvor->sledeci = NULL;
+
+    EnterCriticalSection(&red->kriticna_sekcija);
+
+    if (red->kraj == NULL) {
+        red->pocetak = red->kraj = noviCvor;
+    }
+    else {
+        red->kraj->sledeci = noviCvor;
+        red->kraj = noviCvor;
+    }
+
+    LeaveCriticalSection(&red->kriticna_sekcija);
+}
+
 // Funkcija za uklanjanje elementa iz reda
 int ukloniIzReda(Red* red) {
     EnterCriticalSection(&red->kriticna_sekcija);

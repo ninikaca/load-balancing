@@ -30,7 +30,7 @@ bool Test_Red(const unsigned long broj_podataka) {
         return false;
     }
 
-    // Uniï¿½tavanje reda i oslobadjanje resursa
+    // Uništavanje reda i oslobadjanje resursa
     unistiRed(&red);
 
     return true;
